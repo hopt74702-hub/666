@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThanhHai — Học Lập Trình Vũ Trụ</title>
+    <style>
+        /* ===== RESET & BIẾN ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #00e5ff;
+            --primary-glow: rgba(0, 229, 255, 0.4);
+            --bg-dark: #0a0e1a;
+            --bg-card: rgba(15, 23, 42, 0.85);
+            --border-glow: rgba(0, 229, 255, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --error: #ef4444;
+            --radius: 14px;
+            --transition: 0.3s ease;
+        }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 16px;
+        }
+
+        /* ===== NỀN VŨ TRỤ ===== */
+        #universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            overflow: hidden;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--d, 3s) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%,
+            100% {
+                opacity: 0.15;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        .shooting-star {
+            position: absolute;
+            width: 3px;
+            height: 80px;
+            background: linear-gradient(to bottom, #fff, transparent);
+            transform: rotate(-35deg);
+            animation: fall var(--s, 4s) linear infinite;
+            opacity: 0;
+            filter: drop-shadow(0 0 6px var(--primary));
+            left: var(--x, 50%);
+            top: var(--y, -10px);
+        }
+        @keyframes fall {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(-35deg);
+            }
+            10% {
+                opacity: 0.9;
+            }
+            60% {
+                transform: translate(-250px, 400px) rotate(-35deg);
+                opacity: 0;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        .nebula {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .nebula-1 {
+            width: 500px;
+            height: 500px;
+            top: -10%;
+            right: -10%;
+            background: radial-gradient(circle, rgba(100, 50, 255, 0.12), transparent);
+        }
+        .nebula-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -10%;
+            left: -10%;
+            background: radial-gradient(circle, rgba(255, 50, 100, 0.10), transparent);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: rgba(10, 14, 26, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-radius: 0 0 16px 16px;
+        }
+        .logo {
+            font-size: 1.4
